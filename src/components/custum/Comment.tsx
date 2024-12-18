@@ -57,7 +57,7 @@ const Comment = () => {
                 {comments.map((hereComment, index) => (
                     <li
                         key={index}
-                        className="p-4 rounded-lg shadow-sm"
+                        className="p-4 rounded-lg bg-slate-100 shadow-sm"
                         style={{
                             backgroundColor: 'lightTan', // lightTan background
                             color: 'darkBrown', // darkBrown text
