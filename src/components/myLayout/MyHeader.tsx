@@ -7,7 +7,7 @@ const MyHeader = () => {
   return (
     <div className="navbar   backdrop-blur-md top-0  bg-ivory">
   <div className="flex-1">
-    <a className="btn btn-ghost text-xl text-deepRed ">Anousha&rsquo;s Food Blog</a>
+    <Link href="/" className="btn btn-ghost text-xl text-deepRed ">Anousha&rsquo;s Food Blog</Link>
   </div>
   <div className="flex-none gap-2">
     

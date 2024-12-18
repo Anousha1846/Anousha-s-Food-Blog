@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useMemo } from "react";
 import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
 
@@ -25,19 +25,25 @@ export const StickyScroll = ({
     "var(--neutral-900)",
   ];
 
-  const linearGradients = [
-    "linear-gradient(to bottom right, var(--cyan-500), var(--emerald-500))",
-    "linear-gradient(to bottom right, var(--pink-500), var(--indigo-500))",
-    "linear-gradient(to bottom right, var(--orange-500), var(--yellow-500))",
-  ];
+  // Use useMemo to memoize the linearGradients array
+  const linearGradients = useMemo(
+    () => [
+      "linear-gradient(to bottom right, var(--cyan-500), var(--emerald-500))",
+      "linear-gradient(to bottom right, var(--pink-500), var(--indigo-500))",
+      "linear-gradient(to bottom right, var(--orange-500), var(--yellow-500))",
+    ],
+    [] // Empty array means this will not change between renders
+  );
 
   const [backgroundGradient, setBackgroundGradient] = useState(
     linearGradients[0]
   );
 
   useEffect(() => {
-    setBackgroundGradient(linearGradients[activeCard % linearGradients.length]);
-  }, [activeCard, linearGradients]); // Add linearGradients to the dependencies
+    setBackgroundGradient(
+      linearGradients[activeCard % linearGradients.length]
+    );
+  }, [activeCard, linearGradients]); // Now linearGradients is stable
 
   const handleCardChange = (index: number) => {
     setActiveCard(index); // Example of triggering setActiveCard on some interaction
